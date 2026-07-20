@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3SR - استوديو معدل الإطارات</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="logo">⚡ 3SR ⚡</h1>
+            <p class="subtitle">استوديو معدل الإطارات المتقدم</p>
+        </header>
+
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="interpolate">
+                <i class="fas fa-rocket"></i> زيادة الإطارات
+            </button>
+            <button class="tab-btn" data-tab="spoof">
+                <i class="fas fa-mask"></i> تضليل المنصات
+            </button>
+        </div>
+
+        <main class="content">
+            <!-- قسم زيادة الإطارات -->
+            <div id="interpolate" class="tab-content active">
+                <div class="upload-zone" id="dropZoneInterpolate">
+                    <i class="fas fa-cloud-upload-alt fa-3x"></i>
+                    <p>اسحب الفيديو هنا أو اضغط للاختيار</p>
+                    <input type="file" id="fileInterpolate" accept="video/mp4,video/mov,video/avi" hidden>
+                    <span class="file-info" id="fileInfoInterpolate"></span>
+                </div>
+
+                <div class="settings">
+                    <h3><i class="fas fa-cog"></i> الإعدادات</h3>
+                    <div class="form-group">
+                        <label>معدل الإطارات المطلوب:</label>
+                        <select id="targetFpsInterpolate">
+                            <option value="60">60 FPS</option>
+                            <option value="120">120 FPS</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>جودة المعالجة:</label>
+                        <select id="qualityInterpolate">
+                            <option value="fast">سريعة (تكرار إطارات)</option>
+                            <option value="high" selected>عالية (استيفاء حركي)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button class="action-btn" id="btnInterpolate">
+                    <i class="fas fa-play"></i> ابدأ المعالجة
+                </button>
+
+                <div class="progress-container" id="progressContainerInterpolate" style="display: none;">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFillInterpolate"></div>
+                    </div>
+                    <p class="progress-text" id="progressTextInterpolate">جاري المعالجة... (قد يستغرق هذا بضع دقائق)</p>
+                </div>
+            </div>
+
+            <!-- قسم تضليل المنصات -->
+            <div id="spoof" class="tab-content">
+                <div class="upload-zone" id="dropZoneSpoof">
+                    <i class="fas fa-cloud-upload-alt fa-3x"></i>
+                    <p>اسحب الفيديو هنا أو اضغط للاختيار</p>
+                    <input type="file" id="fileSpoof" accept="video/mp4,video/mov,video/avi" hidden>
+                    <span class="file-info" id="fileInfoSpoof"></span>
+                </div>
+
+                <div class="settings">
+                    <h3><i class="fas fa-cog"></i> الإعدادات</h3>
+                    <div class="form-group">
+                        <label>معدل الإطارات الظاهري المطلوب:</label>
+                        <select id="targetFpsSpoof">
+                            <option value="30">30 FPS</option>
+                            <option value="24">24 FPS</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>طريقة المعالجة:</label>
+                        <select id="methodSpoof">
+                            <option value="reencode">إعادة ترميز موثوق (موصى به للمنصات)</option>
+                            <option value="metadata">تغيير البيانات الوصفية فقط (أسرع)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button class="action-btn" id="btnSpoof">
+                    <i class="fas fa-play"></i> ابدأ المعالجة
+                </button>
+
+                <div class="progress-container" id="progressContainerSpoof" style="display: none;">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFillSpoof"></div>
+                    </div>
+                    <p class="progress-text" id="progressTextSpoof">جاري المعالجة...</p>
+                </div>
+            </div>
+
+            <!-- قسم النتائج -->
+            <div class="result-section" id="resultSection" style="display: none;">
+                <h3><i class="fas fa-check-circle"></i> تم الانتهاء بنجاح!</h3>
+                <div class="video-comparison">
+                    <div class="video-box">
+                        <p>الفيديو الأصلي</p>
+                        <video id="originalVideo" controls></video>
+                    </div>
+                    <div class="video-box">
+                        <p>الفيديو بعد المعالجة</p>
+                        <video id="processedVideo" controls></video>
+                    </div>
+                </div>
+                <a id="downloadBtn" class="download-btn" href="#" download>
+                    <i class="fas fa-download"></i> تحميل الفيديو
+                </a>
+            </div>
+        </main>
+    </div>
+    <script src="static/js/main.js"></script>
+</body>
+</html>
